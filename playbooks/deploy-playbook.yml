@@ -1,0 +1,8 @@
+---
+  - name: Copiar los archivos HTML del controller a los nodos 
+    copy:
+      src: /home/vagrant/ud10-includes/index-{{ env }}.html
+      dest: /var/www/html/index.html
+      owner: www-data
+      group: www-data
+...
