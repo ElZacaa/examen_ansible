@@ -1,12 +1,39 @@
 ---
-- name: Instalar Nginx
+- name: Crear usuarios en los diferentes nodos
   become: yes
   hosts: webservers
+  roles:
+    
   tasks:
-    - include: env-preparation-playbook.yml
-    - include: nginx-playbook.yml
-    - include: deploy-playbook.yml 
+  #- name: Crear usuario
+   # user:
+    #  name: "{{ env }}"
+     # home: /users/{{ env }}
+      #group: user
+      #password: 123 
+  - name:
+    group:
+      name: user 
+      state: present    
 
-  handlers:
-    - include: nginx-handler.yml
+  - name: Crear usuario 1
+    user:
+      name: Dev
+      home: /users/dev
+      group: user
+      password: 123 
+
+  - name: Crear usuario 2
+    user:
+      name: Dev
+      home: /users/dev
+      group: user
+      password: 123 
+
+#- name: Copiar fichero a los nodos
+ # copy:
+  #  src: /home/vagrant/admin.txt
+   # dest: /tmp/{{ env }}.txt
+   # owner: www-data
+    #group: www-data
 ...
